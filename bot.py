@@ -10,12 +10,24 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Привет!")
 import os
+import logging
 from telegram.ext import Application
 
-# Получение токена из переменных окружения
-TOKEN = os.getenv("T8505345629:AAE_PrnTHpYI-yAhGuKPKFngtWhRWpt5SSA")
+# Настройка логирования
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Получение токена из окружения
+TOKEN = os.getenv("8505345629:AAE_PrnTHpYI-yAhGuKPKFngtWhRWpt5SSA")
 if not TOKEN:
-    raise ValueError("Токен Telegram-бота не задан! Проверьте переменную TELEGRAM_BOT_TOKEN.")
+    logging.error("Ошибка: TELEGRAM_BOT_TOKEN не задан!")
+    raise ValueError("Установите переменную TELEGRAM_BOT_TOKEN в настройках окружения.")
+
+logging.info("Инициализация бота...")
+app = Application.builder().token(TOKEN).build()
+
 
 # Инициализация бота
 app = Application.builder().token(TOKEN).build()
