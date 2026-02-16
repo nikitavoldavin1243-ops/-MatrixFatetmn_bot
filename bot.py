@@ -30,7 +30,8 @@ app = Application.builder().token(TOKEN).build()
 
 
 # Инициализация бота
-app = Application.builder().token(TOKEN).build()
+app = Application.builder().token("8505345629:AAE_PrnTHpYI-yAhGuKPKFngtWhRWpt5SSA").build()
+
 
 def main():
     app = Application.builder().token(8505345629:AAE_PrnTHpYI-yAhGuKPKFngtWhRWpt5SSA).build()
